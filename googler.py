@@ -17,4 +17,18 @@ class GooglerCommand(sublime_plugin.TextCommand):
       else:
         scope = self.view.scope_name(region.begin()).rpartition('.')[2].strip()
         query = self.view.substr(region)
-        google("%s %s" %(scope, query))
+
+        self.view.window().run_command("googler_with_edit", { "query": "%s %s" %(scope, query) });
+
+class GooglerWithEditCommand(sublime_plugin.WindowCommand):
+  def run(self, query):
+    self.window.show_input_panel('Search for:', query, self.on_done, self.on_change, self.on_cancel)
+
+  def on_done(self, query):
+      google(query)
+
+  def on_change(self):
+      pass
+
+  def on_cancel(self):
+    pass
