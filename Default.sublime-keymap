@@ -1,0 +1,3 @@
+[
+  { "keys": ["ctrl+o", "ctrl+g"], "command": "googler" }
+]
