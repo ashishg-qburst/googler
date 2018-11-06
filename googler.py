@@ -12,11 +12,9 @@ def open_google():
 class GooglerCommand(sublime_plugin.TextCommand):
   def run(self, edit):
     for region in self.view.sel():
-      location = False
       if region.empty():
           open_google()
       else:
-        location = region
-        if location and not location.empty():
-            query = self.view.substr(location)
-        google(query)
+        scope = self.view.scope_name(region.begin()).rpartition('.')[2].strip()
+        query = self.view.substr(region)
+        google("%s %s" %(scope, query))
