@@ -2,18 +2,17 @@ import sublime
 import webbrowser
 import sublime_plugin
 
-def google(query):
-  urlWithQuery = "https://www.google.com/search?q=%s" % query
-  webbrowser.open(urlWithQuery)
-
-def open_google():
-  webbrowser.open("https://www.google.com")
+def google(query=None):
+  url = "https://www.google.com"
+  if query:
+    url += "/search?q=%s" % query
+  webbrowser.open(url)
 
 class GooglerCommand(sublime_plugin.TextCommand):
   def run(self, edit):
     for region in self.view.sel():
       if region.empty():
-        open_google()
+        google()
       else:
         selection = self.view.substr(region)
         settings = sublime.load_settings("googler.sublime-settings")
