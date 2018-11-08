@@ -13,12 +13,19 @@ class GooglerCommand(sublime_plugin.TextCommand):
   def run(self, edit):
     for region in self.view.sel():
       if region.empty():
-          open_google()
+        open_google()
       else:
+        selection = self.view.substr(region)
+        settings = sublime.load_settings("googler.sublime-settings")
         scope = self.view.scope_name(region.begin()).rpartition('.')[2].strip()
-        query = self.view.substr(region)
 
-        self.view.window().run_command("googler_with_edit", { "query": "%s %s" %(scope, query) });
+        if settings.get('includeScope'):
+          qc = settings.get(scope) or {}
+          query = ' '.join(filter(None, [(qc.get('prefix') or scope), selection, qc.get('suffix')]))
+        else:
+          query = selection
+
+        self.view.window().run_command("googler_with_edit", { "query": query });
 
 class GooglerWithEditCommand(sublime_plugin.WindowCommand):
   def run(self, query):
