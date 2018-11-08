@@ -19,8 +19,8 @@ class GooglerCommand(sublime_plugin.TextCommand):
 
         if settings.get('includeScope'):
           scope = self.view.scope_name(region.begin()).rpartition('.')[2].strip()
-          qc = settings.get(scope) or {}
-          query = ' '.join(filter(None, [(qc.get('prefix') or scope), selection, qc.get('suffix')]))
+          qc = settings.get(scope, {})
+          query = ' '.join(filter(None, [qc.get('prefix') if ('prefix' in qc) else scope, selection, qc.get('suffix')]))
         else:
           query = selection
 
