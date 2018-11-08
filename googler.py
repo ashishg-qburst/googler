@@ -22,13 +22,7 @@ class GooglerCommand(sublime_plugin.TextCommand):
 
 class GooglerWithEditCommand(sublime_plugin.WindowCommand):
   def run(self, query):
-    self.window.show_input_panel('Search for:', query, self.on_done, self.on_change, self.on_cancel)
+    self.window.show_input_panel('Search for:', query, self.on_done, None, None)
 
   def on_done(self, query):
-      google(query)
-
-  def on_change(self):
-      pass
-
-  def on_cancel(self):
-    pass
+    google(query)
