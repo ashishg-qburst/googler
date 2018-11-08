@@ -1,7 +1,7 @@
 // Don't edit this file, use the one in the User folder
 
 {
-  "includeScope": false
+  "includeScope": true
   // {
   //   "ruby": {
   //     "prefix": "rails",
