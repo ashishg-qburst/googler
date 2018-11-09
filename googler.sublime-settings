@@ -2,14 +2,12 @@
 
 {
   "includeScope": true
-  // {
-  //   "ruby": {
-  //     "prefix": "rails",
-  //     "suffix": "site:api.rubyonrails.org"
-  //   },
-  //   "js": {
-  //     "prefix": "", // Blank prefix for this scope
-  //     "suffix": "react docs"
-  //   }
-  // }
+  //  "ruby": {
+  //    "prefix": "rails",
+  //    "suffix": "site:api.rubyonrails.org"
+  //  },
+  //  "js": {
+  //    "prefix": "", // Blank prefix for this scope
+  //    "suffix": "react docs"
+  //  }
 }
