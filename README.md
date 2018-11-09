@@ -2,7 +2,7 @@
 
 Sublime Text plugin for easy googling.
 
-## Features and Abilities:
+## Features and Abilities
 
 * Open Google homepage
 * Google current selection
